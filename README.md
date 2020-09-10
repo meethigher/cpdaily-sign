@@ -158,15 +158,15 @@
     "isMalposition" : 0,
     "longitude" : "",
     "signedStuInfo" : {
-      "cls" : "192401",
-      "major" : "计算机科学与技术-牛逼",
+      "cls" : "20200521",
+      "major" : "改变世界专业-牛逼",
       "dept" : "牛逼学院",
       "sex" : "男",
       "mobile" : null,
       "nation" : "-",
       "userWid" : "1017790009",
-      "userId" : "20194583",
-      "userName" : "陈传诚",
+      "userId" : "20200521",
+      "userName" : "雷军",
       "malposition" : null,
       "extraFieldItemVos" : [
         {
@@ -218,7 +218,7 @@
     "signStatus" : "2",
     "signPlaceSelected" : [
       {
-        "address" : "长春工业大学（北湖西区）",
+        "address" : "只有野鸡学校才用这个流氓app（北界王西区）",
         "radius" : 520,
         "longitude" : "125.398185",
         "placeWid" : null,
@@ -231,7 +231,7 @@
         "creatorUserId" : null
       },
       {
-        "address" : "长春工业大学（北湖东区）",
+        "address" : "只有野鸡学校才用这个流氓app（北界王东区）",
         "radius" : 500,
         "longitude" : "125.40993457956229",
         "placeWid" : null,
@@ -244,7 +244,7 @@
         "creatorUserId" : null
       },
       {
-        "address" : "长春工业大学（南湖校区）",
+        "address" : "只有野鸡学校才用这个流氓app（南界王校区）",
         "radius" : 400,
         "longitude" : "125.296568",
         "placeWid" : null,
