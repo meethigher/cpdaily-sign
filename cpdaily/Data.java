@@ -11,13 +11,14 @@ import java.util.Map;
  */
 public class Data {
 	/**
-	 * {"appVersion":"8.1.11","systemName":"android","model":"MI 9","lon":0,"systemVersion":"10","deviceId":"设备号","userId":学号,"lat":0}的加密值
+	 * {"appVersion":"8.1.11","systemName":"android","model":"MI
+	 * 9","lon":0,"systemVersion":"10","deviceId":"设备号","userId":学号,"lat":0}的加密值
 	 */
-	public static String cpdailyExtension = "kQDkr/pNQMdvv2ITpF4MDg8CNYEeTt0h/wnPA+r6lfjlaghljljljjfaiBRA/RO/v2pzirtMIWOBr9Ph5QXmLrt/fjalgjljhtinbloyno9hoi8gh+g88Rq+1azwa+45eNFmVhaxX2G0ZnEP+NMfYFrmqY7s/O0+72DgJEz0j2oqRMXgrxzLimV9FmNE+WB+eaQv8r6qi7w==";
+	public static String cpdailyExtension = "ooxxoxx";
 	/**
 	 * cookie
 	 */
-	public static String cookie = "acw_tc=2f624a3joitj95u9ijt75jg9sqkygiayithiyaga76; MOD_AUTH_CAS=ST-iap:164532485815876819107:ST:d2f3dd70-5544-4751-b3af-ba410ajlagd3d:20200910150517";
+	public static String cookie = "ooxxoxx";
 	/**
 	 * 接收方邮箱
 	 */
@@ -34,19 +35,23 @@ public class Data {
 	 * 纬度
 	 */
 	public static String lat = "44.001709";
+	
+	
 	/**
 	 * 学校的host
 	 */
 	public static final String host = "https://ccut.campusphere.net";
 	/**
 	 * 发件方邮箱，经过多次测试，腾讯企业邮箱是最稳定的
+	 * 
+	 * 2020-09-12 垃圾腾讯，还是阿里牛逼
 	 */
-	public static final String fromMail = "邮箱账号";
+	public static final String fromMail = "meethigher@meethigher.top";
 
 	/**
 	 * 腾讯企业邮箱密码
 	 */
-	public static final String fromMailPw = "邮箱密码";
+	public static final String fromMailPw = "ooxxoxx";
 
 	/**
 	 * Cpdaily-Extension需要根据实际情况
@@ -94,9 +99,20 @@ public class Data {
 	 * 获取详细表单接口
 	 */
 	public static final String detailSign = host + "/wec-counselor-sign-apps/stu/sign/detailSignInstance";
+
 	/**
 	 * 提交最新签到接口
 	 */
 	public static final String submitSign = host + "/wec-counselor-sign-apps/stu/sign/submitSign";
+
+	/**
+	 * 获取排行榜接口
+	 */
+	public static final String rankUrl = host + "/wec-counselor-sign-apps/stu/sign/getSignRankList";
+	
+	/**
+	 * 刷赞接口
+	 */
+	public static final String giveLike = host + "/wec-counselor-sign-apps/stu/sign/giveLikeToStu";
 
 }
