@@ -14,11 +14,11 @@ public class Data {
 	 * {"appVersion":"8.1.11","systemName":"android","model":"MI
 	 * 9","lon":0,"systemVersion":"10","deviceId":"设备号","userId":学号,"lat":0}的加密值
 	 */
-	public static String cpdailyExtension = "ooxxoxx";
+	public static String cpdailyExtension = "kQDkr/pNQMdvh/wnPA+r6EtMYsWjvHihlxWV/gdfSzUbosGnrEHnJQMiBRA/RO/v2pzirtMIWOBr9Ph5QXmLrt/ngN2gij4JaPXSQpGvPDsNMqxFHVa8dAAH9b5vav7LSy/AusZqXSa9YrtG1G0cLYuJyoCq8OfZyyIfHEChUnIrSCvLdw0wnuBtmLPss8I5d4t/3MF3Y1GjNvej+GW6prUV1Jbdtr8Z4qw==";
 	/**
 	 * cookie
 	 */
-	public static String cookie = "ooxxoxx";
+	public static String cookie = "acw_tc=2f624a35159972be4490bb23b5fabd7b; MOD_AUTH_CAS=ST-iap:101861587681910d38d65:20200910155656";
 	/**
 	 * 接收方邮箱
 	 */
@@ -46,12 +46,12 @@ public class Data {
 	 * 
 	 * 2020-09-12 垃圾腾讯，还是阿里牛逼
 	 */
-	public static final String fromMail = "meethigher@meethigher.top";
+	public static final String fromMail = "";
 
 	/**
 	 * 腾讯企业邮箱密码
 	 */
-	public static final String fromMailPw = "ooxxoxx";
+	public static final String fromMailPw = "";
 
 	/**
 	 * Cpdaily-Extension需要根据实际情况
@@ -114,5 +114,7 @@ public class Data {
 	 * 刷赞接口
 	 */
 	public static final String giveLike = host + "/wec-counselor-sign-apps/stu/sign/giveLikeToStu";
+	
+	public static final String test=host+"/wec-counselor-attendance-apps/student/attendance/giveLike";
 
 }

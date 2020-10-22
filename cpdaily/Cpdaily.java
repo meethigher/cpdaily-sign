@@ -8,6 +8,16 @@ import net.sf.json.JSONObject;
 public class Cpdaily {
 	public static String signIds;
 	public static String stuSignWid;
+	
+	//加速代码
+	public static String[] items;
+	public static String signInstanceWid;
+	
+	//加速代码
+	public static void prepData() {
+		items=getItemId();
+		signInstanceWid = JSONObject.fromObject(getSignId()).get("signInstanceWid").toString();
+	}
 
 	/**
 	 * 提交签到
@@ -15,8 +25,8 @@ public class Cpdaily {
 	 * @return json字符串
 	 */
 	public static String submitSign() {
-		String[] items = getItemId();
-		String signInstanceWid = JSONObject.fromObject(getSignId()).get("signInstanceWid").toString();
+//		String[] items = getItemId();
+//		String signInstanceWid = JSONObject.fromObject(getSignId()).get("signInstanceWid").toString();
 		String param = "{\"abnormalReason\":\"\",\"position\":\"" + Data.poi + "\",\"longitude\":" + Data.log
 				+ ",\"isNeedExtra\":1,\"latitude\":" + Data.lat
 				+ ",\"isMalposition\":0,\"extraFieldItems\":[{\"extraFieldItemWid\":" + items[0]
@@ -98,9 +108,6 @@ public class Cpdaily {
 	 * @return
 	 */
 	public static String getRank() {
-		//刷赞
-		goGoGo();
-		
 		String rankJson = HttpUtil.sendPost(Data.rankUrl, Cpdaily.signIds, Data.getHeaders());
 //		String rankJson="{\"code\":\"0\",\"message\":\"SUCCESS\",\"datas\":{\"serverDate\":\"2020-09-12\",\"signStartTime\":\"2020-09-09 16:00\",\"self\":{\"stuSignWid\":\"736437\",\"studentId\":\"20194583\",\"likedNum\":0,\"headPicUrl\":null,\"nickName\":null,\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:20\",\"hasLiked\":\"0\"},\"signs\":[{\"stuSignWid\":\"726393\",\"studentId\":\"20183922\",\"likedNum\":4,\"headPicUrl\":null,\"nickName\":\"李同辉\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"},{\"stuSignWid\":\"726411\",\"studentId\":\"20183948\",\"likedNum\":1,\"headPicUrl\":null,\"nickName\":\"邵燕妮\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"},{\"stuSignWid\":\"732625\",\"studentId\":\"20194583\",\"likedNum\":2,\"headPicUrl\":null,\"nickName\":\"陈传诚\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"},{\"stuSignWid\":\"732643\",\"studentId\":\"20195883\",\"likedNum\":4,\"headPicUrl\":null,\"nickName\":\"陈雪\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"},{\"stuSignWid\":\"732467\",\"studentId\":\"20195912\",\"likedNum\":6,\"headPicUrl\":null,\"nickName\":\"魏欣雨\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"},{\"stuSignWid\":\"729754\",\"studentId\":\"20183685\",\"likedNum\":2,\"headPicUrl\":null,\"nickName\":\"文乐\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"},{\"stuSignWid\":\"732601\",\"studentId\":\"20195887\",\"likedNum\":8,\"headPicUrl\":null,\"nickName\":\"费冰心\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"},{\"stuSignWid\":\"729231\",\"studentId\":\"20170187\",\"likedNum\":3,\"headPicUrl\":null,\"nickName\":\"苗景浩\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"},{\"stuSignWid\":\"732642\",\"studentId\":\"20195882\",\"likedNum\":6,\"headPicUrl\":null,\"nickName\":\"陈相宇\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"},{\"stuSignWid\":\"729875\",\"studentId\":\"20172345\",\"likedNum\":2,\"headPicUrl\":null,\"nickName\":\"孟子轩\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"},{\"stuSignWid\":\"730018\",\"studentId\":\"20190364\",\"likedNum\":2,\"headPicUrl\":null,\"nickName\":\"白俊仁\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"},{\"stuSignWid\":\"726484\",\"studentId\":\"20183888\",\"likedNum\":2,\"headPicUrl\":null,\"nickName\":\"周宏宇\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"},{\"stuSignWid\":\"732414\",\"studentId\":\"20195894\",\"likedNum\":6,\"headPicUrl\":null,\"nickName\":\"李卫芳\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"},{\"stuSignWid\":\"726444\",\"studentId\":\"20183972\",\"likedNum\":3,\"headPicUrl\":null,\"nickName\":\"王琨\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"},{\"stuSignWid\":\"729134\",\"studentId\":\"20170272\",\"likedNum\":2,\"headPicUrl\":null,\"nickName\":\"王中正\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"},{\"stuSignWid\":\"729829\",\"studentId\":\"20183683\",\"likedNum\":3,\"headPicUrl\":null,\"nickName\":\"王子卿\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"},{\"stuSignWid\":\"726543\",\"studentId\":\"20191793\",\"likedNum\":2,\"headPicUrl\":null,\"nickName\":\"操瑞\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"},{\"stuSignWid\":\"733283\",\"studentId\":\"20190112\",\"likedNum\":2,\"headPicUrl\":null,\"nickName\":\"许元赫\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"},{\"stuSignWid\":\"733743\",\"studentId\":\"20191955\",\"likedNum\":2,\"headPicUrl\":null,\"nickName\":\"王海卓\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"},{\"stuSignWid\":\"731123\",\"studentId\":\"20191461\",\"likedNum\":2,\"headPicUrl\":null,\"nickName\":\"李东泽\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"},{\"stuSignWid\":\"728997\",\"studentId\":\"20173795\",\"likedNum\":2,\"headPicUrl\":null,\"nickName\":\"王娇\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"},{\"stuSignWid\":\"733094\",\"studentId\":\"20194389\",\"likedNum\":2,\"headPicUrl\":null,\"nickName\":\"王宇麒\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"},{\"stuSignWid\":\"726853\",\"studentId\":\"20181884\",\"likedNum\":2,\"headPicUrl\":null,\"nickName\":\"张子烨\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"},{\"stuSignWid\":\"729641\",\"studentId\":\"20193242\",\"likedNum\":2,\"headPicUrl\":null,\"nickName\":\"周千一\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"},{\"stuSignWid\":\"729928\",\"studentId\":\"20190463\",\"likedNum\":2,\"headPicUrl\":null,\"nickName\":\"裴玉胜\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"},{\"stuSignWid\":\"728073\",\"studentId\":\"20171809\",\"likedNum\":2,\"headPicUrl\":null,\"nickName\":\"邢宝文\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"},{\"stuSignWid\":\"727690\",\"studentId\":\"20194061\",\"likedNum\":2,\"headPicUrl\":null,\"nickName\":\"曹健飞\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"},{\"stuSignWid\":\"727038\",\"studentId\":\"20182896\",\"likedNum\":2,\"headPicUrl\":null,\"nickName\":\"金芳圆\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"},{\"stuSignWid\":\"733960\",\"studentId\":\"20191921\",\"likedNum\":2,\"headPicUrl\":null,\"nickName\":\"于岩\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"},{\"stuSignWid\":\"733656\",\"studentId\":\"20191907\",\"likedNum\":2,\"headPicUrl\":null,\"nickName\":\"宋常\",\"signDate\":\"2020-09-09\",\"signTime\":\"2020-09-09 16:00\",\"hasLiked\":\"0\"}]}}";
 		JSONArray jsonArray = JSONObject.fromObject(rankJson).getJSONObject("datas").getJSONArray("signs");
@@ -126,7 +133,8 @@ public class Cpdaily {
 		System.out.println("开始刷赞...");
 		while(i>0) {
 			i--;
-			HttpUtil.sendPost(Data.giveLike, param, Data.getHeaders());
+			HttpUtil.sendPost(Data.test, param, Data.getHeaders());
+//			HttpUtil.sendPost(Data.giveLike, param, Data.getHeaders());
 			try {
 				Thread.sleep(1);
 			} catch (InterruptedException e) {
@@ -136,6 +144,6 @@ public class Cpdaily {
 		System.out.println("刷赞结束");
 	}
 	public static void main(String[] args) {
-		goGoGo();
+		System.out.println(submitSign());
 	}
 }

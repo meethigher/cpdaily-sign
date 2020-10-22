@@ -19,6 +19,7 @@ import java.util.Set;
  * @description 用来模拟发送请求
  */
 public class HttpUtil {
+	
 	public static String sendGet(String url, Map<String, String> headers) {
 		String result = "";
 		BufferedReader in = null;
@@ -88,6 +89,16 @@ public class HttpUtil {
 			}
 		}
 		return result;
+	}
+	
+	public static void main(String[] args) {
+//		System.out.println(sendPost("https://ccut.campusphere.net/wec-counselor-attendance-apps/student/attendance/getStuAttendacesInOneDay", "{}", Data.getHeaders()));
+		
+//		System.out.println(sendPost("https://ccut.campusphere.net/wec-counselor-attendance-apps/student/attendance/detailSignInstance", "{\"stuSignWid\":\"230834\",\"signInstanceWid\":\"818\",\"signWid\":\"285184\"}", Data.getHeaders()));
+		
+//		System.out.println(sendPost("https://ccut.campusphere.net/wec-counselor-attendance-apps/student/attendance/submitSign","{}",Data.getSubHeaders()));
+	
+		System.out.println(sendPost("https://ccut.campusphere.net/wec-counselor-attendance-apps/student/attendance/getStsAccess","{}",Data.getHeaders()));
 	}
 
 }
