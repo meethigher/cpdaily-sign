@@ -10,9 +10,7 @@ import cpdaily.HttpUtil;
 import cpdaily.SendMail;
 
 public class Start {
-	public static int morning;
-	public static int noon;
-	public static int evening;
+	public static int hour;
 	public static int minute;
 	public static int second;
 	public static String isRank;
@@ -20,6 +18,7 @@ public class Start {
 
 	public static boolean flag = false;
 	static {
+		System.out.println("2020-10-22-18:20版本");
 		Scanner input = new Scanner(System.in);
 		System.out.println("请输入Cpdaily-Extension:");
 		Data.cpdailyExtension = input.nextLine();
@@ -28,16 +27,14 @@ public class Start {
 		System.out.println("请输入MOD_AUTH_CAS:");
 		String modAuthCas = input.nextLine();
 		Data.cookie = "acw_tc=" + atwTc + "; MOD_AUTH_CAS=" + modAuthCas;
+		System.out.println("请输入要上传的照片链接：");
+		Data.photoUrls=input.nextLine();
 		System.out.println("请输入接收通知的邮箱：");
 		Data.toMail = input.nextLine();
-		System.out.println("是否加入刷赞功能？ y or n：");
-		isRank = input.nextLine();
-		System.out.println("请输入早上开始小时：");
-		morning = input.nextInt();
-		System.out.println("请输入中午开始小时：");
-		noon = input.nextInt();
-		System.out.println("请输入晚上开始小时：");
-		evening = input.nextInt();
+		System.out.println("输入要刷赞的数量：");
+		Data.likeNum=input.nextInt();
+		System.out.println("请输入开始小时：");
+		hour=input.nextInt();
 		System.out.println("请输入开始分钟：");
 		minute = input.nextInt();
 		System.out.println("请输入开始秒：");
@@ -46,9 +43,7 @@ public class Start {
 		delay = input.nextInt();
 
 		input.close();
-
-		Cpdaily.prepData();
-		System.out.println("已经预加载数据，正在运行...");
+		System.out.println("正在运行");
 	}
 
 	public static void beginSubmit() {
@@ -67,13 +62,13 @@ public class Start {
 			String result = Cpdaily.submitResult();
 			if ("success".equals(result)) {
 				System.out.println(date + " 签到成功");
-				if ("y".equals(isRank)) {
+				if (Data.likeNum>0) {
 					Cpdaily.goGoGo();
 				} else {
+					//睡眠是为了留出时间来加载排行榜
 					try {
 						Thread.sleep(1000 * 30);
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
@@ -87,11 +82,6 @@ public class Start {
 			} else {
 				System.out.println("签到失败");
 			}
-
-			//预先加载下次数据
-			if(!flag) {
-				Cpdaily.prepData();
-			}
 		}
 	}
 
@@ -103,7 +93,6 @@ public class Start {
 				try {
 					Thread.sleep(1000 * 60 * 10);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -116,20 +105,17 @@ public class Start {
 				int currentHour = c.get(Calendar.HOUR_OF_DAY);
 				int currentMinute = c.get(Calendar.MINUTE);
 				int currentSecond = c.get(Calendar.SECOND);
-				if (currentHour == morning && currentMinute == minute && currentSecond == second) {
+				if (currentHour == hour && currentMinute == minute && currentSecond == second) {
 					flag = true;
 				}
-				if (currentHour == noon && currentMinute == minute && currentSecond == second) {
-					flag = true;
-				}
-				if (currentHour == evening && currentMinute == minute && currentSecond == second) {
-					flag = true;
+				//提前一个小时，预加载数据，霸榜，gogogo
+				if (currentHour == (hour-1) && currentMinute == minute && currentSecond == second) {
+					Cpdaily.prepData();
 				}
 				beginSubmit();
 				try {
 					Thread.sleep(100);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

@@ -1,5 +1,6 @@
 package cpdaily;
 
+import java.util.Random;
 import java.util.function.Consumer;
 
 import net.sf.json.JSONArray;
@@ -17,6 +18,7 @@ public class Cpdaily {
 	public static void prepData() {
 		items=getItemId();
 		signInstanceWid = JSONObject.fromObject(getSignId()).get("signInstanceWid").toString();
+		System.out.println("已经预加载数据");
 	}
 
 	/**
@@ -25,14 +27,16 @@ public class Cpdaily {
 	 * @return json字符串
 	 */
 	public static String submitSign() {
+		//如果使用预加载，可以不用下面这两行代码
 //		String[] items = getItemId();
 //		String signInstanceWid = JSONObject.fromObject(getSignId()).get("signInstanceWid").toString();
-		String param = "{\"abnormalReason\":\"\",\"position\":\"" + Data.poi + "\",\"longitude\":" + Data.log
-				+ ",\"isNeedExtra\":1,\"latitude\":" + Data.lat
-				+ ",\"isMalposition\":0,\"extraFieldItems\":[{\"extraFieldItemWid\":" + items[0]
-				+ ",\"extraFieldItemValue\":\"37.3度以下\"},{\"extraFieldItemWid\":" + items[1]
-				+ ",\"extraFieldItemValue\":\"健康\"}],\"signInstanceWid\":\"" + signInstanceWid
-				+ "\",\"signPhotoUrl\":\"\"}";
+		String param = "{\"abnormalReason\":\"\",\"position\":\""+Data.poi+"\""
+				+ ",\"longitude\":"+Data.log+",\""
+				+ "isNeedExtra\":1,\"latitude\":"+Data.lat+","
+				+ "\"isMalposition\":0,\"extraFieldItems\":[{\"extraFieldItemWid\":"+items[0]+""
+						+ ",\"extraFieldItemValue\":\"37.3度以下\"},{\"extraFieldItemWid\":"+items[1]+""
+								+ ",\"extraFieldItemValue\":\"37.3度以下\"},{\"extraFieldItemWid\":"+items[2]+""
+								+ ",\"extraFieldItemValue\":\"37.3度以下\"},{\"extraFieldItemWid\":"+items[3]+",\"extraFieldItemValue\":\"健康\"}],\"signInstanceWid\":\""+signInstanceWid+"\",\"signPhotoUrl\":\""+randomPhoto()+"\"}";
 		return HttpUtil.sendPost(Data.submitSign, param, Data.getSubHeaders());
 	}
 
@@ -71,17 +75,35 @@ public class Cpdaily {
 		return "{\"signWid\":" + jsonObject.getInt("signWid") + ",\"signInstanceWid\":"
 				+ jsonObject.getInt("signInstanceWid") + "}";
 	}
+	
+	/**
+	 * 返回随机照片
+	 * 
+	 * @return
+	 */
+	public static String randomPhoto() {
+		String[] photos = Data.photoUrls.split(",");
+		int pieces = photos.length;
+		int index = new Random().nextInt(pieces);
+		return photos[index];
+	}
 
 	/**
 	 * 获取表单中选项的id
 	 * 
-	 * @return 数组 0为体温37度以下id，1为身体健康id
+	 * @return 数组
+	 * 下标0 早体温 37度下
+	 * 下标1 午体温 37度下
+	 * 下标2 晚体温 37度下
+	 * 下标3 身体健康状况 健康
 	 */
 	public static String[] getItemId() {
 		JSONArray jsonArray = JSONObject.fromObject(getDetailSign()).getJSONObject("datas").getJSONArray("extraField");
-		String[] items = new String[2];
+		String[] items = new String[4];
 		items[0] = jsonArray.getJSONObject(0).getJSONArray("extraFieldItems").getJSONObject(0).getString("wid");
 		items[1] = jsonArray.getJSONObject(1).getJSONArray("extraFieldItems").getJSONObject(0).getString("wid");
+		items[2] = jsonArray.getJSONObject(2).getJSONArray("extraFieldItems").getJSONObject(0).getString("wid");
+		items[3] = jsonArray.getJSONObject(3).getJSONArray("extraFieldItems").getJSONObject(0).getString("wid");
 		return items;
 	}
 	
@@ -124,17 +146,17 @@ public class Cpdaily {
 	
 	
 	/**
-	 * 刷赞，嗨皮，gogogo
+	 * 刷赞
 	 * 
+	 * @return
 	 */
 	public static void goGoGo() {
-		int i=520;
+		int i = Data.likeNum;
 		String param="{\"stuSignWid\":\""+stuSignWid+"\",\"hasLiked\":0}";
 		System.out.println("开始刷赞...");
-		while(i>0) {
+		while (i > 0) {
 			i--;
-			HttpUtil.sendPost(Data.test, param, Data.getHeaders());
-//			HttpUtil.sendPost(Data.giveLike, param, Data.getHeaders());
+			HttpUtil.sendPost(Data.giveLike, param, Data.getHeaders());
 			try {
 				Thread.sleep(1);
 			} catch (InterruptedException e) {
@@ -142,8 +164,5 @@ public class Cpdaily {
 			}
 		}
 		System.out.println("刷赞结束");
-	}
-	public static void main(String[] args) {
-		System.out.println(submitSign());
 	}
 }
