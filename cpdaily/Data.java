@@ -22,11 +22,11 @@ public class Data {
 	 * {"appVersion":"8.1.11","systemName":"android","model":"MI
 	 * 9","lon":0,"systemVersion":"10","deviceId":"设备号","userId":学号,"lat":0}的加密值
 	 */
-	public static String cpdailyExtension = "kQDkr/pNQMdvv2ITpF4MDg8CNYEeTt0h/wnPA+r6EtMYsWjvHihlxWV/gdfSzUbosGnrEHnJQMiBRA/RO/v2pzirtMIWOBr9Ph5QXmLrt/ngN2gij4JaPXSQpGvPDsNMqxFHVa8dAAH9b5vav7LSy/AusZqXSa9YrtG1G0cLYuJyoCq8OfZyyIfHEChUnIrSCvLdw0wnuBtmLPss8I5d4t/3MF3Y1GjNvej+GW6prUV1Jbdtr8Z4qw==";
+	public static String cpdailyExtension = "kQDkr/pNt0h/wnPA+r6EtMYsWjvHihlxWV/gdfSzUbosGnrEHnJQMiBRA/RO/v2pzirtMIWOBr9Ph5QXmLrt/ngN2gij4JaPXSQpGvPDsNMqxFHVa8dAAH9b5vav7LSy/AusZqXSa9YrtG1G0cLYuJyoCq8OfZyyIfHEChUnIrSCvLdw0wnuBtmLPss8I5d4t/3MF3Y1GjNvej+GW6prUV1Jbdtr8Z4qw==";
 	/**
 	 * cookie
 	 */
-	public static String cookie = "acw_tc=2f624a3515997253376138675e2b11ed991fe5bc28b3be4490bb23b5fabd7b; MOD_AUTH_CAS=ST-iap:1018615876819107:ST:8fd3e626-266d-4ced-84dc-d4e4a2d38d65:20200910155656";
+	public static String cookie = "acw_tc=2f624a338675e2b11ed991fe5bc2abd7b; MOD_AUTH_CAS=ST-iap:1018615876819107:ST:8fd3e626-266d-4ced-84dc-d4e4a2d38d65:20200910155656";
 	/**
 	 * 接收方邮箱
 	 */
@@ -53,12 +53,12 @@ public class Data {
 	 * 
 	 * 2020-09-12 垃圾腾讯，还是阿里牛逼
 	 */
-	public static final String fromMail = "chen@meethigher.top";
+	public static final String fromMail = "fafafafaf";
 
 	/**
 	 * 腾讯企业邮箱密码
 	 */
-	public static final String fromMailPw = "Chen1050121804";
+	public static final String fromMailPw = "";
 
 	/**
 	 * Cpdaily-Extension需要根据实际情况
