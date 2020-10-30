@@ -13,7 +13,7 @@ public class Data {
 	/**
 	 * 图片链接
 	 */
-	public static String photoUrls = "http://cdn.meethigher.top/media/ccc3.jpg,http://cdn.meethigher.top/media/ccc2.jpg,http://cdn.meethigher.top/media/ccc1.jpg";
+	public static String photoUrls = "https://meethigher.top/images/kitchen.png,https://meethigher.top/images/kitchen.jpg";
 	/**
 	 * 默认赞数量
 	 */
@@ -22,11 +22,11 @@ public class Data {
 	 * {"appVersion":"8.1.11","systemName":"android","model":"MI
 	 * 9","lon":0,"systemVersion":"10","deviceId":"设备号","userId":学号,"lat":0}的加密值
 	 */
-	public static String cpdailyExtension = "kQDkr/pNt0h/wnPA+r6EtMYsWjvHihlxWV/gdfSzUbosGnrEHnJQMiBRA/RO/v2pzirtMIWOBr9Ph5QXmLrt/ngN2gij4JaPXSQpGvPDsNMqxFHVa8dAAH9b5vav7LSy/AusZqXSa9YrtG1G0cLYuJyoCq8OfZyyIfHEChUnIrSCvLdw0wnuBtmLPss8I5d4t/3MF3Y1GjNvej+GW6prUV1Jbdtr8Z4qw==";
+	public static String cpdailyExtension = "kQDkr/pNQMdvv2lfjaljgajljglajgagdhagaMiBRA/RO/v2pzirtMIWOBr9Ph5QXmLrt/ngN2gij4JaPKFJLAJGAjljgaklLJlhuuigJkhjhHlHhKhkHkpoiyojFHVa8dAAH9b5vav7LSy/AusZqXSa9YrtG1G0cLYuJyoCq8OfZyyIfHEChUnIrSCvLdw0wnuBtmLPss8I5d4t/3MF3Y1GjNvej+GW6prUV1Jbdtr8Z4qw==";
 	/**
 	 * cookie
 	 */
-	public static String cookie = "acw_tc=2f624a338675e2b11ed991fe5bc2abd7b; MOD_AUTH_CAS=ST-iap:1018615876819107:ST:8fd3e626-266d-4ced-84dc-d4e4a2d38d65:20200910155656";
+	public static String cookie = "acw_tc=2f624a2216091hyoj196flajj8jg8991hagfd2d5f5d91117658eb5ab2e70f8a; MOD_AUTH_CAS=ST-iap:1018615876819107:ST:6abde32a-3hshs-47s6-faf-b2d573e28ad9:20201030093730";
 	/**
 	 * 接收方邮箱
 	 */
@@ -53,12 +53,12 @@ public class Data {
 	 * 
 	 * 2020-09-12 垃圾腾讯，还是阿里牛逼
 	 */
-	public static final String fromMail = "fafafafaf";
+	public static final String fromMail = "chen@meethigher.top";
 
 	/**
 	 * 腾讯企业邮箱密码
 	 */
-	public static final String fromMailPw = "";
+	public static final String fromMailPw = "xxxx";
 
 	/**
 	 * Cpdaily-Extension需要根据实际情况
@@ -99,18 +99,25 @@ public class Data {
 
 	/**
 	 * 获取最新的签到表单
+	 * 
+	 *2020年10月29日前接口/wec-counselor-sign-apps/stu/sign/getStuSignInfosInOneDay
+	 *2020年10月29日后接口/wec-counselor-sign-apps/stu/sign/queryDailySginTasks
 	 */
-	public static final String querySign = host + "/wec-counselor-sign-apps/stu/sign/getStuSignInfosInOneDay";
+	public static final String querySign = host + "/wec-counselor-sign-apps/stu/sign/queryDailySginTasks";
 
 	/**
 	 * 获取详细表单接口
+	 * 2020年10月29日前接口/wec-counselor-sign-apps/stu/sign/detailSignInstance
+	 * 2020年10月29日后接口/wec-counselor-sign-apps/stu/sign/detailSignTaskInst
 	 */
-	public static final String detailSign = host + "/wec-counselor-sign-apps/stu/sign/detailSignInstance";
+	public static final String detailSign = host + "/wec-counselor-sign-apps/stu/sign/detailSignTaskInst";
 
 	/**
 	 * 提交最新签到接口
+	 * 2020年10月29日前接口/wec-counselor-sign-apps/stu/sign/submitSign
+	 * 2020年10月29日后接口/wec-counselor-sign-apps/stu/sign/completeSignIn
 	 */
-	public static final String submitSign = host + "/wec-counselor-sign-apps/stu/sign/submitSign";
+	public static final String submitSign = host + "/wec-counselor-sign-apps/stu/sign/completeSignIn";
 
 	/**
 	 * 获取排行榜接口

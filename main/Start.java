@@ -9,6 +9,12 @@ import cpdaily.Data;
 import cpdaily.HttpUtil;
 import cpdaily.SendMail;
 
+/**
+ * 
+ * 
+ * @author kit chen
+ *
+ */
 public class Start {
 	public static int hour;
 	public static int minute;
@@ -18,7 +24,7 @@ public class Start {
 
 	public static boolean flag = false;
 	static {
-		System.out.println("2020-10-22-18:20版本");
+		System.out.println("2020-10-30-09:20版本");
 		Scanner input = new Scanner(System.in);
 		System.out.println("请输入Cpdaily-Extension:");
 		Data.cpdailyExtension = input.nextLine();
@@ -28,13 +34,13 @@ public class Start {
 		String modAuthCas = input.nextLine();
 		Data.cookie = "acw_tc=" + atwTc + "; MOD_AUTH_CAS=" + modAuthCas;
 		System.out.println("请输入要上传的照片链接：");
-		Data.photoUrls=input.nextLine();
+		Data.photoUrls = input.nextLine();
 		System.out.println("请输入接收通知的邮箱：");
 		Data.toMail = input.nextLine();
 		System.out.println("输入要刷赞的数量：");
-		Data.likeNum=input.nextInt();
+		Data.likeNum = input.nextInt();
 		System.out.println("请输入开始小时：");
-		hour=input.nextInt();
+		hour = input.nextInt();
 		System.out.println("请输入开始分钟：");
 		minute = input.nextInt();
 		System.out.println("请输入开始秒：");
@@ -62,10 +68,10 @@ public class Start {
 			String result = Cpdaily.submitResult();
 			if ("success".equals(result)) {
 				System.out.println(date + " 签到成功");
-				if (Data.likeNum>0) {
+				if (Data.likeNum > 0) {
 					Cpdaily.goGoGo();
 				} else {
-					//睡眠是为了留出时间来加载排行榜
+					// 睡眠是为了留出时间来加载排行榜
 					try {
 						Thread.sleep(1000 * 30);
 					} catch (InterruptedException e) {
@@ -76,6 +82,7 @@ public class Start {
 				String[] mails = new String[2];
 				mails[0] = "签到成功通知";
 				mails[1] = "时间：" + date + "\n地点：" + Data.poi + "\n经度：" + Data.log + "\n纬度：" + Data.lat
+						+ "\n照片："+Cpdaily.todayPhoto
 						+ "\n排行榜：以下展示列表\n" + rankList + "\n签到Id：" + Cpdaily.signIds;
 				System.out.println(SendMail.send(mails));
 				flag = false;
@@ -108,8 +115,9 @@ public class Start {
 				if (currentHour == hour && currentMinute == minute && currentSecond == second) {
 					flag = true;
 				}
-				//提前一个小时，预加载数据，霸榜，gogogo
-				if (currentHour == (hour-1) && currentMinute == minute && currentSecond == second) {
+				// 提前一分钟，预加载数据，霸榜，gogogo
+				//bug：如果有整点提交的话，改成提交一小时即可
+				if (currentHour == hour&& currentMinute == (minute-1) && currentSecond == second) {
 					Cpdaily.prepData();
 				}
 				beginSubmit();

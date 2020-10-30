@@ -1,14 +1,20 @@
 package cpdaily;
 
 import java.util.Random;
-import java.util.function.Consumer;
 
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
+/**
+ * 
+ * 
+ * @author kit chen
+ *
+ */
 public class Cpdaily {
 	public static String signIds;
 	public static String stuSignWid;
+	public static String todayPhoto;
 	
 	//加速代码
 	public static String[] items;
@@ -16,9 +22,13 @@ public class Cpdaily {
 	
 	//加速代码
 	public static void prepData() {
-		items=getItemId();
-		signInstanceWid = JSONObject.fromObject(getSignId()).get("signInstanceWid").toString();
-		System.out.println("已经预加载数据");
+		try {
+			items=getItemId();
+			signInstanceWid = JSONObject.fromObject(getSignId()).get("signInstanceWid").toString();
+			System.out.println("已经预加载数据");
+		} catch (Exception e) {
+			System.out.println("预加载数据失败");
+		}
 	}
 
 	/**
@@ -27,16 +37,17 @@ public class Cpdaily {
 	 * @return json字符串
 	 */
 	public static String submitSign() {
-		//如果使用预加载，可以不用下面这两行代码
+//		//如果使用预加载，可以不用下面这两行代码
 //		String[] items = getItemId();
 //		String signInstanceWid = JSONObject.fromObject(getSignId()).get("signInstanceWid").toString();
+		todayPhoto=randomPhoto();
 		String param = "{\"abnormalReason\":\"\",\"position\":\""+Data.poi+"\""
 				+ ",\"longitude\":"+Data.log+",\""
 				+ "isNeedExtra\":1,\"latitude\":"+Data.lat+","
 				+ "\"isMalposition\":0,\"extraFieldItems\":[{\"extraFieldItemWid\":"+items[0]+""
 						+ ",\"extraFieldItemValue\":\"37.3度以下\"},{\"extraFieldItemWid\":"+items[1]+""
 								+ ",\"extraFieldItemValue\":\"37.3度以下\"},{\"extraFieldItemWid\":"+items[2]+""
-								+ ",\"extraFieldItemValue\":\"37.3度以下\"},{\"extraFieldItemWid\":"+items[3]+",\"extraFieldItemValue\":\"健康\"}],\"signInstanceWid\":\""+signInstanceWid+"\",\"signPhotoUrl\":\""+randomPhoto()+"\"}";
+								+ ",\"extraFieldItemValue\":\"37.3度以下\"},{\"extraFieldItemWid\":"+items[3]+",\"extraFieldItemValue\":\"健康\"}],\"signInstanceWid\":\""+signInstanceWid+"\",\"signPhotoUrl\":\""+todayPhoto+"\"}";
 		return HttpUtil.sendPost(Data.submitSign, param, Data.getSubHeaders());
 	}
 

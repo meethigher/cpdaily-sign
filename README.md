@@ -2,6 +2,10 @@
 
 <!--more-->
 
+2020年10月29日，也就是昨晚，今日校园接口改了。
+
+笑死人的是，他只是把接口的名字改了改，具体的内容，还是没改，垃圾二字送给他。
+
 站在巨人的肩膀上，所以该代码全部开源，我也借鉴的大佬的东西，放在第三节致谢。有问题可以在下面进行留言讨论！
 
 [源码](https://github.com/meethigher/cpdaily-sign)
@@ -24,7 +28,7 @@
 接口
 
 ```html
-/wec-counselor-sign-apps/stu/sign/getStuSignInfosInOneDay
+/wec-counselor-sign-apps/stu/sign/queryDailySginTasks
 ```
 
 参数
@@ -113,7 +117,7 @@
 接口
 
 ```html
-/wec-counselor-sign-apps/stu/sign/detailSignInstance
+/wec-counselor-sign-apps/stu/sign/detailSignTaskInst
 ```
 
 参数
@@ -347,7 +351,7 @@
 接口
 
 ```html
-/wec-counselor-sign-apps/stu/sign/submitSign
+/wec-counselor-sign-apps/stu/sign/completeSignIn
 ```
 
 参数
